@@ -1,3 +1,5 @@
+# O n log n
+
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
 
@@ -22,3 +24,18 @@ class Solution:
             # print(i, nums[i], subsequence_length_array)
 
         return len(subsequence_length_array)
+    
+# O n ^ 2
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        dp = [1] * len(nums)  # dp[i] will store the length of the LIS ending at index i
+        for i in range(1, len(nums)):
+            for j in range(i):
+                if nums[i] > nums[j]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+        
+        return max(dp)
