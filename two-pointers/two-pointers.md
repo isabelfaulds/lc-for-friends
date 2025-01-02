@@ -1,6 +1,7 @@
 #### Fast and Slow Pointers
 - move in same direction
 - slow reference pointer and fast current pointer
+- [linked list cycle](two-pointers/fast_slow_pointers/141-linked_list_cycle.py) ratio 2:1 moves
 
 ```python
 reference_pointer = 0 
@@ -17,7 +18,9 @@ while current_pointer < len(test_array) + 1:
 #### Opposite Converging Pointers
 - move in converging direction
 - move pointer of preferred value inwards
+- optimize by skipping duplicate start / end pointers
 - [Squares Sorted Array](./977-squares-sorted-array.py)
+- [3 Sum](./15-3sum.py)
 
 ```python
 start_pointer = 0
