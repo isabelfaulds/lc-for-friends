@@ -56,7 +56,6 @@ class Solution:
 class Solution:
     def circularArrayLoop(self, nums: List[int]) -> bool:
         def get_next(index):
-            # This function returns the next index considering the circular array.
             return (index + nums[index]) % len(nums)
 
         for i in range(len(nums)):
