@@ -4,28 +4,7 @@
 #         self.val = val
 #         self.next = next
 
-
-class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        dummy = ListNode(0)
-        dummy.next = head
-        tortoise = hare = dummy
-        
-        # offset hare by n
-        for _ in range(n + 1):
-            hare = hare.next
-        
-        # stop moving tortoise when hare is at the end, tortoise is naturally len - n
-        while hare:
-            hare = hare.next
-            tortoise = tortoise.next
-        
-        # Remove the nth node from the end
-        tortoise.next = tortoise.next.next
-        
-        return dummy.next
-
-
+# cleaner, uses offset
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         dummy = ListNode(0)
@@ -49,6 +28,32 @@ class Solution:
 
         return dummy.next
 
+# second attempt same speed
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
+        hare , tortoise = head , head
+        hi , ti , ni = 0 , 0 , (-1 * n)
+
+        # dont move tortoise prematurely
+        while hare:
+            hare = hare.next
+            hi += 1
+        ni += hi - 1# gives the index before the removal
+
+        if ni < 0: # index before the removal is before the head, pop off the top
+            return head.next
+        
+        while tortoise and ti != ni:
+            tortoise = tortoise.next
+            ti += 1
+        
+        if not tortoise.next:
+            return None
+        
+        tortoise.next = tortoise.next.next
+        return dummy.next
 
 # first attempt failed - didnt take into considereation small length lists or large n tests where moving tortoise moves it past n
 class Solution:
@@ -86,31 +91,4 @@ class Solution:
         if tortoise and tortoise.next:
             tortoise.next = tortoise.next.next
 
-        return dummy.next
-
-
-class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        dummy = ListNode(0)
-        dummy.next = head
-        hare , tortoise = head , head
-        hi , ti , ni = 0 , 0 , (-1 * n)
-
-        # dont move tortoise prematurely
-        while hare:
-            hare = hare.next
-            hi += 1
-        ni += hi - 1# gives the index before the removal
-
-        if ni < 0: # index before the removal is before the head, pop off the top
-            return head.next
-        
-        while tortoise and ti != ni:
-            tortoise = tortoise.next
-            ti += 1
-        
-        if not tortoise.next:
-            return None
-        
-        tortoise.next = tortoise.next.next
         return dummy.next
