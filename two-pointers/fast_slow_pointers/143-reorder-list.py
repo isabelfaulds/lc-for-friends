@@ -12,7 +12,6 @@
  # 1st pattern is already within the list
  # 2nd pattern is half of the list reversed
 
-
  # returns head
  # allowed to break list into segments
  # reverse a segment
@@ -47,7 +46,6 @@ class Solution:
             curr = next_node
 
         while h2:
-            # print(head)
             h1_next , h2_next = h1.next , h2.next
 
             h1.next = h2
