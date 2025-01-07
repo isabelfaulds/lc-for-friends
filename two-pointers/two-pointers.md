@@ -22,6 +22,7 @@ while current_pointer < len(test_array) + 1:
 - [Squares Sorted Array](./977-squares-sorted-array.py)
 - [3 Sum](./15-3sum.py)
 
+Conditional logic, like if a string == a string
 ```python
 start_pointer = 0
 end_pointer = len(test_array) - 1
@@ -46,6 +47,16 @@ while p1 < p2:
         p1 += 1
     if result > target
         p2 -= 1
+```
+
+If inclusive of a range of values
+- Count up the indexes between p2 & p1
+```
+while p1 < p2:
+    val = func(p1,p2)
+    if val < target:
+        count += (p2 - p1)
+        p1 += 1
 ```
 
 
