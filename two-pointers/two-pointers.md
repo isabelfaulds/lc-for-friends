@@ -37,6 +37,17 @@ while start_pointer < end_pointer:
         start_pointer += 1
 ```
 
+Comparing against a value
+- Increment p1 if too small
+- Increment p2 if too large
+```python
+while p1 < p2:
+    if result < target:
+        p1 += 1
+    if result > target
+        p2 -= 1
+```
+
 
 
 ####  Reversed Comparison Pointers
